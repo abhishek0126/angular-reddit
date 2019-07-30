@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { Article } from "./article.model";
 
 @Component({
@@ -8,14 +8,10 @@ import { Article } from "./article.model";
 })
 export class ArticleComponent implements OnInit {
   @HostBinding ('attr.class') cssClass = 'row';
-  article: Article;
+  @Input() article: Article;
+  @Output() changeVote = new EventEmitter<string>();
 
   constructor() {
-    this.article = new Article(
-      'Angular 2',
-      'http://angular.io',
-      10
-    )
    }
 
   ngOnInit() {
@@ -23,6 +19,7 @@ export class ArticleComponent implements OnInit {
 
   voteUp(): boolean {
     this.article.voteUp();
+    this.changeVote.next('abc');
     return false;
   }
 

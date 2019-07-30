@@ -17,13 +17,13 @@ export class Article {
         this.votes -= 1;
     }
 
-  // domain() extracts the domain from a url
-  domain(): string {
-    try {
-      const domainAndPath: string = this.link.split('//')[1];
-      return domainAndPath.split('/')[0];
-    } catch(err) {
-      return null;
+    // domain() extracts the domain from a url
+    domain(): string {
+        try {
+            const domainAndPath: string = this.link.split('//')[1];
+            return domainAndPath.split('/')[0];
+        } catch (err) {
+            return null;
+        }
     }
-  }
 }
